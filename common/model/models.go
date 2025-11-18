@@ -3,20 +3,20 @@ package model
 import "time"
 
 type Question struct {
-	id int
-	text string
-	created_at time.Time
+	Id int `json:"id"` //gorm:"primaryKey;autoIncrement"`
+	Text string `json:"text"`
+	Created_at time.Time `json:"created_at" gorm:"autoCreateTime"`
 }
 
 type Answer struct {
-	id int
-	question_id int
-	user_id string
-	text string
-	created_at time.Time
+	Id int `json:"id"` //gorm:"primaryKey;autoIncrement`
+	Question_id int `json:"question_id"`
+	User_id string `json:"user_id"`
+	Text string `json:"text"`
+	Created_at time.Time `json:"created_at" gorm:"autoCreateTime"`
 }
 
 type User struct {
-	id int
-	Name string
+	Id int `json:"id"` //gorm:"primaryKey;autoIncrement`
+	Name string `json:"name"`
 }

@@ -1,13 +1,13 @@
 -- +goose Up
 -- +goose StatementBegin
-CREATE TABLE question (
-  id int PRIMARY KEY,
-  question text,
-  created_at TIMESTAMP
+CREATE TABLE questions (
+  id SERIAL PRIMARY KEY,
+  text text,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
-DROP TABLE IF EXISTS question;
+DROP TABLE IF EXISTS questions;
 -- +goose StatementEnd

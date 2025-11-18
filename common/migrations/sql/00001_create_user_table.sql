@@ -1,7 +1,7 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE users (
-  id int PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name text
 );
 -- +goose StatementEnd
