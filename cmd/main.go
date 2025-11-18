@@ -38,6 +38,17 @@ func main() {
 
 	http.HandleFunc("/questions/{id}/answers/", a.PostAnswer)
 
+	http.HandleFunc("/answers/", func(w http.ResponseWriter, r *http.Request) {
+		id := strings.TrimPrefix(r.URL.Path, "/answers/")
+
+		switch r.Method {
+		case http.MethodGet:
+			a.GETAnswerByID(w, r, id)
+		case http.MethodDelete:
+			a.DELETEAnswerByID(w, r, id)
+		}
+	})
+
 	log.Println("Start server on 8080 port")
 	err := http.ListenAndServe(":8080", nil)
 	if err != nil {
