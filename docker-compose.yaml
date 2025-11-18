@@ -2,6 +2,23 @@ version: '3.9'
 
 services:
 
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: db
+      DB_PASSWORD: 123
+      DB_NAME: question_answer
+    ports:
+      - "8080:8080"
+
   postgres:
     image: postgres:latest
     container_name: postgres

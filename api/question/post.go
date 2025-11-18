@@ -19,7 +19,6 @@ func (h *questionHandler) PostQuestion(w http.ResponseWriter, r *http.Request) {
 
 	ctx := context.Background()
 
-	// h.DB.Create(&question)
 	err = gorm.G[model.Question](h.DB).Create(ctx, &question)
 	if err != nil {
 		http.Error(w, "Error while creating question", http.StatusInternalServerError)
