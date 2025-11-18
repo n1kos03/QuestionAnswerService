@@ -1,12 +1,9 @@
 -- +goose Up
 -- +goose StatementBegin
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  user_name text
-);
+INSERT INTO users (user_name) VALUES ('Jhon'), ('Fill'), ('Anna');
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
-DROP TABLE IF EXISTS users;
+DELETE FROM users WHERE id = 1, id = 2, id = 3;
 -- +goose StatementEnd
